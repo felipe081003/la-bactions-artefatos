@@ -1,1 +1,24 @@
-# pipeline inteligente
+name: Pipeline Inteligente
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * *"
+  create:  
+    tags:
+      - 'v*'
+
+jobs:
+  exemplo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+      - name: Exemplo de execução
+        run: echo "Pipeline Inteligente rodando!"
